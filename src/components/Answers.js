@@ -16,23 +16,6 @@ const Answers = ({ onSelect }) => (
   </Scrollable>
 );
 
-const Answer = styled.div`
-  display: flex;
-  height: 54px;
-  min-width: 100px;
-  margin-right: 4px;
-  padding: 0 25px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  background: white;
-  color: black;
-
-  &:last-child {
-    margin-right: 25px;
-  }
-`;
-
 const Scrollable = styled.div`
   display: flex;
   overflow: auto;
@@ -48,6 +31,24 @@ const Scrollable = styled.div`
 const AnswerList = styled.div`
   display: flex;
   width: fit-content;
+`;
+
+const Answer = styled.div`
+  display: flex;
+  height: 54px;
+  min-width: 100px;
+  margin-right: 4px;
+  padding: 0 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: white;
+  color: black;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 25px;
+  }
 `;
 
 export default Answers;
