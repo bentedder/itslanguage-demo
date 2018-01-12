@@ -15,6 +15,7 @@ Some shortcuts were taken for the sake of the demo, and some things left out. Fo
 5. Resize browser window using dev tools to test responsiveness
 
 ### Things to note
+* Breakpoint is set at iPad level (1023px and below)
 * Most of the application is built with stateless functional components
 * Most of the css is in styled-components, with one or two override exceptions
 * Flexbox is used throughout, with some guesses taken based on mocks for how layout should be
