@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { appBlue } from '../styles';
 
 const answerData = ['ik', 'jij/je', 'u', 'hij', 'zij/ze', 'wij/we', 'jullie'];
 
@@ -20,8 +21,10 @@ const Scrollable = styled.div`
   display: flex;
   overflow: auto;
   width: 100%;
-  background: #667FE6;
+  background-color: ${appBlue};
   padding: 25px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 
   @media (min-width: 700px) {
     justify-content: center;
