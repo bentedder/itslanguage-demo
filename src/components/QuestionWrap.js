@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Answers from './Answers';
+import Answers, { answerData } from './Answers';
 import Question from './Question';
 import ButtonGroup from './ButtonGroup';
 import styled from 'styled-components';
@@ -9,14 +9,22 @@ class QuestionWrap extends Component {
   state = {
     answer: null,
     question: 'ben Stefan', 
+    isCorrect: null,
   };
 
   setAnswer = (answer) => {
-    this.setState({ answer });
+    this.setState({ answer, isCorrect: null }, () => {
+      console.log(this.state);
+    });
   }
 
   checkAnswer = () => {
-    console.log('check answer');
+    console.log(this.state.answer);
+    this.setState({
+      isCorrect: this.state.answer === answerData[0]
+    }, () => {
+      console.log(this.state);
+    });
   }
 
   skipQuestion = () => {
@@ -26,7 +34,11 @@ class QuestionWrap extends Component {
   render() {
     return (
       <Wrapper>
-        <Question answer={this.state.answer} question={this.state.question} />
+        <Question
+          isCorrect={this.state.isCorrect}
+          answer={this.state.answer}
+          question={this.state.question}
+        />
         <Answers onSelect={this.setAnswer} />
         <ButtonGroup
           answer={this.state.answer}

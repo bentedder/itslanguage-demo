@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { appBlue } from '../styles';
 
-const answerData = ['ik', 'jij/je', 'u', 'hij', 'zij/ze', 'wij/we', 'jullie'];
+export const answerData = ['ik', 'jij/je', 'u', 'hij', 'zij/ze', 'wij/we', 'jullie'];
 
 const Answers = ({ onSelect }) => (
   <Scrollable>
@@ -26,7 +26,7 @@ const Scrollable = styled.div`
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 
-  @media (min-width: 700px) {
+  @media (min-width: 1023px) {
     justify-content: center;
   }
 `;

@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { appBlue, appLightGrey } from '../styles';
+import { appBlue, appLightGrey, mainGreen } from '../styles';
 
 // assumption: is a question with a prefix word
-const Question = ({ question, answer }) => (
+const Question = ({ question, answer, isCorrect }) => (
   <QuestionDetails>
-    <Instructions>Vul het ontbrekende woord in</Instructions>
-    <QuestionImage><img width="100%" alt="question" src="http://via.placeholder.com/575x320" /></QuestionImage>
+    <Instructions>
+      {answer && isCorrect === true && <span>Je antwoord is goed!</span> }
+      {answer && isCorrect === false && <span>Je antwoord is fout!</span> }
+      {isCorrect == null && <span>Vul het ontbrekende woord in</span> }
+    </Instructions>
+    <QuestionImage>
+      <img width="100%" alt="question" src={require('../icons/IMG2_desktop@2x.png')} />
+    </QuestionImage>
     <Box>
-      <AnswerBlank>{answer}</AnswerBlank>
+      <AnswerBlank answer={answer} isCorrect={isCorrect}>{answer}</AnswerBlank>
       <QuestionText>{question}</QuestionText>
     </Box>
   </QuestionDetails>
@@ -30,7 +36,7 @@ const Instructions = styled.div`
   border-bottom: 1px solid ${appLightGrey};
   width: 100%;
   text-align: center;
-  @media (min-width: 700px) {
+  @media (min-width: 1023px) {
     font-size: 24px;
   }    
 `;
@@ -39,7 +45,6 @@ const QuestionImage = styled.div`
   width: 575px;
   max-width: 80%;
   margin-top: 30px;
-  background-color: ${appBlue};
 `;
 
 const Box = styled.div`
@@ -47,8 +52,6 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   font-size: 24px;
-  @media (min-width: 700px) {
-  }    
 `;
 
 const AnswerBlank = styled.div`
@@ -56,7 +59,13 @@ const AnswerBlank = styled.div`
   position: relative;
   margin-right: 3px;
   text-align: center;
-  color: ${appBlue};
+  color: ${props => {
+    if (props.answer && props.isCorrect !== null) {
+      return props.isCorrect ? mainGreen : 'red'
+    } else {
+      return appBlue;
+    }
+  }};
   padding: 0 5px;
   
   &:after {
@@ -65,7 +74,13 @@ const AnswerBlank = styled.div`
     width: 100%;
     height: 3px;
     border-radius: 3px;
-    background-color: ${appBlue};
+    background-color: ${props => {
+      if (props.answer && props.isCorrect !== null) {
+        return props.isCorrect ? mainGreen : 'red'
+      } else {
+        return appBlue;
+      }
+    }};
     position: absolute;
     bottom: -5px;
     left: 0;

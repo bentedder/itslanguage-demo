@@ -5,8 +5,8 @@ import { appLightGrey } from '../styles';
 const Navbar = () => (
   <Wrap>
     <NavLeft>
-      <Logo></Logo>
-      <div>Thema 3: Familie</div>
+      <Logo />
+      <div><strong>Thema 3:</strong> Familie</div>
     </NavLeft>
     <NavCenter>
       Afbeelding 1 of 8
@@ -19,7 +19,7 @@ const Navbar = () => (
 
 const Wrap = styled.div`
   display: flex;
-  flex: 0 0 50px;
+  height: 50px;
   border-bottom: 1px solid ${appLightGrey};
   background: white;
   justify-content: space-between;
@@ -29,7 +29,12 @@ const Logo = styled.div`
   width: 35px;
   height: 35px;
   margin-right: 10px;
-  background: #ccc;
+  background: url(${require('../icons/Logo@2x.png')}) no-repeat center center;
+  background-size: contain;
+
+  img {
+    width: 100%;
+  }
 `;
 
 const NavInner = styled.div`
@@ -46,7 +51,7 @@ const NavRight = NavInner.extend`
 
 const NavCenter = NavInner.extend`
   display: none;
-  @media (min-width: 700px) {
+  @media (min-width: 1023px) {
     display: flex;
   }   
 `;
